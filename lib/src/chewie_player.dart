@@ -306,9 +306,9 @@ class ChewieController extends ChangeNotifier {
       await videoPlayerController.seekTo(startAt);
     }
 
-    if (fullScreenByDefault) {
-      videoPlayerController.addListener(_fullScreenListener);
-    }
+//     if (fullScreenByDefault) {
+//       videoPlayerController.addListener(_fullScreenListener);
+//     }
   }
 
   void _fullScreenListener() async {
@@ -334,6 +334,9 @@ class ChewieController extends ChangeNotifier {
   }
 
   Future<void> play() async {
+    if( fullScreenByDefault && !_isFullScreen ){
+       toggleFullScreen();
+    }
     await videoPlayerController.play();
   }
 
