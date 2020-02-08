@@ -502,19 +502,19 @@ class _CupertinoControlsState extends State<CupertinoControls> {
       if (controller.value.isPlaying) {
         _hideStuff = false;
         _hideTimer?.cancel();
-        controller.pause();
+        chewieController.pause();
       } else {
         _cancelAndRestartTimer();
 
         if (!controller.value.initialized) {
           controller.initialize().then((_) {
-            controller.play();
+            chewieController.play();
           });
         } else {
           if (isFinished) {
             controller.seekTo(Duration(seconds: 0));
           }
-          controller.play();
+          chewieController.play();
         }
       }
     });
